@@ -42,9 +42,6 @@ public class Player : MonoBehaviour
             //making movement
             transform.Translate(moveDelta.x * Time.deltaTime* moveSpeed,0, 0);
         }
-        
-
     }
-
 }
  
