@@ -1415,7 +1415,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1423,6 +1423,48 @@ TextureImporter:
       bones: []
       spriteID: be7a92318ac8a684093ffcf4bba749cf
       internalID: -291546188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbf9547b4ae82e54d971acf93c588141
+      internalID: -309202478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222a34154f3c9a448b9217e427336d4d
+      internalID: 173831044
       vertices: []
       indices: 
       edges: []
@@ -1709,6 +1751,7 @@ TextureImporter:
       Atlas_99: 75752464
       Player_0: 408590533
       Player_1: 724290595
+      boss: -309202478
       box_0: -618726214
       box_1: 1720458499
       box_2: -1945042305
@@ -1717,6 +1760,7 @@ TextureImporter:
       chest_1: 1659425361
       dark_floor: 1349563370
       enemy_0: 1339040688
+      enemy_1: 173831044
       floor: -1850363042
       floor_0: 1109196273
       floor_1: -1920906174

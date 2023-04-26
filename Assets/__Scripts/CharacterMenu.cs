@@ -61,7 +61,7 @@ public class CharacterMenu : MonoBehaviour
         else
             upgradeCostText.text = GameManager.instance.weaponPrices[GameManager.instance.weapon.weaponLevel].ToString();       //meta
         levelText.text = GameManager.instance.GetCurrentLevel().ToString();
-        hitPointText.text = GameManager.instance.player.hitpoint.ToString();
+        hitPointText.text = GameManager.instance.player.hitpoint.ToString()+"/" + GameManager.instance.player.maxHitpoint.ToString();
         pesosText.text = GameManager.instance.pesos.ToString();
 
         //xp Bar

@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             Destroy(player.gameObject);
             Destroy(floatingTextManager.gameObject);
+            Destroy(hud);
+            Destroy(menu);
             return;
         }
         instance = this;
         SceneManager.sceneLoaded += LoadState;
-        DontDestroyOnLoad(gameObject);
         PlayerPrefs.DeleteKey("SaveState");
     }
 
@@ -33,7 +34,10 @@ public class GameManager : MonoBehaviour
     public Player player;
     public weapon weapon;
     public FloatingTextManager floatingTextManager;
-
+    public RectTransform hitPointBar;
+    public GameObject hud;
+    public GameObject menu;
+    public Animator deathMenuAnim;
     //Logic
     public int pesos;
     public int experience;
@@ -59,6 +63,14 @@ public class GameManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    //Hitpointbar
+    public void OnHitPointChange()
+    {
+        float ratio = (float)player.hitpoint / (float)player.maxHitpoint;
+        hitPointBar.localScale = new Vector3(1, ratio, 1);
+
     }
 
     //Exp system
@@ -100,6 +112,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("LVL UP!");
         player.OnLevelUp();
+        GameManager.instance.OnHitPointChange();
     }
 
     //Save state
@@ -124,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadState(Scene s, LoadSceneMode mode)
     {
-        
+        //SceneManager.sceneLoaded -= LoadState;
         if (!PlayerPrefs.HasKey("SaveState"))
             return;
         
@@ -134,6 +147,7 @@ public class GameManager : MonoBehaviour
         if (GetCurrentLevel()!= 1)
             player.SetLevel(GetCurrentLevel());
         player.hitpoint = int.Parse(data[4]);
+        GameManager.instance.OnHitPointChange();
         weapon.SetWeaponLevel(int.Parse(data[3]));
         if (SceneManager.GetActiveScene().name == "Dungeon_1")
             player.transform.position = new Vector3((-0.63f),0,0);
@@ -142,5 +156,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Load");
 
     }   
+
+    //Death menu and restart
+    public void Restart()
+    {
+        deathMenuAnim.SetTrigger("Hide");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+        player.Respawn();
+
+    }
 }
 
